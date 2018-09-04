@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="library@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="library">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="librarysystem"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="sys"/>
+    <table id="8" parent="2" name="author"/>
+    <table id="9" parent="2" name="book"/>
+    <table id="10" parent="2" name="bookorder"/>
+    <table id="11" parent="2" name="genre"/>
+    <table id="12" parent="2" name="status"/>
+    <table id="13" parent="2" name="user"/>
+    <column id="14" parent="8" name="author_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="15" parent="8" name="author_name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="16" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>author_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="17" parent="9" name="book_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="18" parent="9" name="title">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="9" name="count">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="9" name="year">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="9" name="authorId">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="9" name="genreId">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="23" parent="9" name="fk_Book_Author_id">
+      <ColNames>authorId</ColNames>
+    </index>
+    <index id="24" parent="9" name="fk_Book_Genre_id">
+      <ColNames>genreId</ColNames>
+    </index>
+    <key id="25" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>book_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="26" parent="9" name="fk_Book_Author">
+      <ColNames>authorId</ColNames>
+      <RefSchemaName>library</RefSchemaName>
+      <RefTableName>author</RefTableName>
+      <RefColNames>author_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="27" parent="9" name="fk_Book_Genre">
+      <ColNames>genreId</ColNames>
+      <RefSchemaName>library</RefSchemaName>
+      <RefTableName>genre</RefTableName>
+      <RefColNames>genre_id</RefColNames>
+    </foreign-key>
+    <column id="28" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="29" parent="10" name="userId">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="10" name="bookId">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="10" name="statusId">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="32" parent="10" name="fk_BookOrder_Book_idx">
+      <ColNames>bookId</ColNames>
+    </index>
+    <index id="33" parent="10" name="fk_BookOrder_Status_idx">
+      <ColNames>statusId</ColNames>
+    </index>
+    <index id="34" parent="10" name="fk_BookOrder_User_idx">
+      <ColNames>userId</ColNames>
+    </index>
+    <key id="35" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="36" parent="10" name="fk_BookOrder_User">
+      <ColNames>userId</ColNames>
+      <RefSchemaName>library</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>user_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="37" parent="10" name="fk_BookOrder_Book">
+      <ColNames>bookId</ColNames>
+      <RefSchemaName>library</RefSchemaName>
+      <RefTableName>book</RefTableName>
+      <RefColNames>book_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="38" parent="10" name="fk_BookOrder_Status">
+      <ColNames>statusId</ColNames>
+      <RefSchemaName>library</RefSchemaName>
+      <RefTableName>status</RefTableName>
+      <RefColNames>status_id</RefColNames>
+    </foreign-key>
+    <column id="39" parent="11" name="genre_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="40" parent="11" name="kind_of_genre">
+      <Position>2</Position>
+      <DataType>varchar(70)|0</DataType>
+    </column>
+    <key id="41" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>genre_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="42" parent="12" name="status_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="43" parent="12" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="44" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>status_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="13" name="user_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="46" parent="13" name="email">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="13" name="telephone">
+      <Position>3</Position>
+      <DataType>varchar(25)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="13" name="user_password">
+      <Position>4</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="13" name="first_name">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="13" name="last_name">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="13" name="isLibrarian">
+      <Position>7</Position>
+      <DataType>bit(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="52" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
